@@ -1,0 +1,318 @@
+/* ============================================
+   AI 과학기술-경제 인사이트 분석기 스타일
+   ============================================ */
+
+/* ── 기본 리셋 ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ── 헤더 ── */
+header {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: #fff;
+    padding: 40px 40px 35px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* ── 메인 ── */
+main {
+    flex: 1;
+    padding: 40px;
+}
+
+/* ── 업로드 섹션 ── */
+.upload-section {
+    margin-bottom: 40px;
+}
+
+.upload-area {
+    border: 2px dashed #c0c8d0;
+    border-radius: 12px;
+    padding: 50px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+    position: relative;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: #2c5364;
+    background: #f0f7fa;
+}
+
+.upload-area.has-file {
+    border-color: #27ae60;
+    background: #f0faf4;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #a0aab4;
+    margin-bottom: 12px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.upload-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.upload-hint {
+    font-size: 13px;
+    color: #999;
+}
+
+.upload-area input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #2c5364;
+    font-weight: 600;
+}
+
+/* ── 분석 버튼 ── */
+.btn-analyze {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-analyze:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(44, 83, 100, 0.3);
+}
+
+.btn-analyze:disabled,
+.btn-analyze.loading {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── 에러 메시지 ── */
+.error-box {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: #991b1b;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* ── 결과 영역 ── */
+.results {
+    margin-top: 10px;
+}
+
+.result-header {
+    margin-bottom: 30px;
+}
+
+.result-header h2 {
+    font-size: 24px;
+    color: #0f2027;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.file-info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #e8f4f8;
+    color: #2c5364;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.badge-secondary {
+    background: #f0f0f0;
+    color: #666;
+}
+
+/* ── 결과 카드 ── */
+.result-card {
+    background: #fff;
+    border: 1px solid #e8ecf0;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.result-card h3 {
+    font-size: 18px;
+    color: #2c5364;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8f4f8;
+    font-weight: 700;
+}
+
+/* ── 중요 문장 리스트 ── */
+.sentence-list {
+    padding-left: 24px;
+}
+
+.sentence-list li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.sentence-list li::marker {
+    color: #2c5364;
+    font-weight: 700;
+}
+
+/* ── 요약 텍스트 ── */
+.summary-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+/* ── 키워드 태그 ── */
+.keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.keyword-tag {
+    display: inline-block;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #e8f4f8 0%, #d4eef6 100%);
+    color: #1a3a4a;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #c0dce8;
+    transition: all 0.2s ease;
+}
+
+.keyword-tag:hover {
+    background: linear-gradient(135deg, #2c5364 0%, #203a43 100%);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* ── 경제적 시사점 그리드 ── */
+.insights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.insight-item {
+    background: #fafbfc;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid #2c5364;
+}
+
+.insight-item h4 {
+    font-size: 15px;
+    color: #2c5364;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.insight-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ── 푸터 ── */
+footer {
+    background: #f5f7f9;
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 13px;
+    border-top: 1px solid #e8ecf0;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 640px) {
+    header {
+        padding: 28px 20px 24px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    main {
+        padding: 24px 16px;
+    }
+
+    .upload-area {
+        padding: 36px 20px;
+    }
+
+    .result-card {
+        padding: 20px;
+    }
+}

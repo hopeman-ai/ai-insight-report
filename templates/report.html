@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ filename }} - H-Stone AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <span class="logo-icon">💎</span>
+                        <h1>H-Stone AI</h1>
+                    </div>
+                </div>
+                <nav class="nav-actions">
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                        <span class="icon">⬅️</span> 목록으로
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <article class="report-content">
+                {{ content|safe }}
+            </article>
+        </main>
+
+        <footer>
+            <p>AI 인사이트 리포트 생성기 v1.0 | 파일명: {{ filename }}</p>
+        </footer>
+    </div>
+
+    <script>
+        // 외부 링크는 새 창에서 열기
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    </script>
+</body>
+</html>

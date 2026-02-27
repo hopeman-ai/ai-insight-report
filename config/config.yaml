@@ -1,0 +1,67 @@
+# AI Insight Report Configuration
+
+# 다중 데이터 소스 설정
+data_sources:
+  # 과찾남 박문수 (네이버 블로그)
+  naver_blog:
+    enabled: true
+    name: "과찾남 박문수"
+    source_type: "naver_blog"
+    rss_url: "https://rss.blog.naver.com/ideafinder.xml"
+    base_url: "https://blog.naver.com/ideafinder"
+    max_posts: 20
+    days_lookback: 7
+
+  # 곽재원의 Now&Future (아주경제)
+  ajunews_column:
+    enabled: true
+    name: "곽재원의 Now&Future"
+    source_type: "ajunews"
+    base_url: "https://www.ajunews.com"
+    author: "곽재원"
+    column_name: "Now&Future"
+    max_posts: 10
+    year_filter: 2025  # 2025년 자료만
+
+# 수집 설정
+collection:
+  max_posts_per_source: 20
+  days_lookback: 14  # 최근 1~2주
+  priority_sources:
+    - "국제기구"
+    - "학회"
+    - "정부"
+    - "주요미디어"
+
+# Claude API 설정 (환경변수 ANTHROPIC_API_KEY 사용 권장)
+claude:
+  model: "claude-3-5-sonnet-20241022"
+  max_tokens: 4096  # 전문 리포트용으로 증가
+  temperature: 0.3
+
+# 리포트 설정
+report:
+  # 리포트 형식
+  format: "h-stone-ai-study"
+  title_prefix: "H-Stone AI Study"
+  output_dir: "reports"
+  date_format: "%Y.%m.%d"
+
+  # 리포트 구조
+  sections:
+    - h_summary  # H-Summary (2~3개 bullet)
+    - reports    # 보고서 (2~3개)
+    - rnd        # R&D (2~3개)
+    - ai_news    # AI 뉴스 (5~7개)
+
+  # 작성 스타일
+  style:
+    tone: "professional_report"  # 보고서 톤 (언론 기사 X)
+    perspective: "strategic_infrastructure"  # AI를 전략 인프라 관점
+    language: "korean"
+    minimize_adjectives: true
+
+# 데이터 저장 설정
+storage:
+  feeds_dir: "feeds"
+  data_format: "json"

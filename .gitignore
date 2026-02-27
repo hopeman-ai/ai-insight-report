@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상환경
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 환경변수
+.env
+
+# 수집된 데이터
+feeds/*.json
+
+# 생성된 리포트 (선택적으로 커밋 가능)
+# reports/*.md
+
+# 로그 파일
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 업로드 임시 파일
+uploads/
+
+# 임시 파일
+tmpclaude-*

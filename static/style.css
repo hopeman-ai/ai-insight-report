@@ -1,0 +1,380 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* 헤더 */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo-section {
+    flex: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo-icon {
+    font-size: 48px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.logo h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 메인 콘텐츠 */
+main {
+    padding: 40px;
+}
+
+/* 리포트 목록 */
+.reports-list h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #667eea;
+    font-weight: 700;
+}
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+    gap: 20px;
+    max-width: 1000px;
+}
+
+.report-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.report-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.report-info h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.report-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.meta-item {
+    font-size: 15px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.meta-item .icon {
+    font-size: 18px;
+}
+
+.report-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.report-actions .btn {
+    width: 100%;
+}
+
+/* 버튼 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+/* 빈 상태 */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.empty-state code {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    margin-top: 10px;
+}
+
+/* 리포트 콘텐츠 */
+.report-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.report-content h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #667eea;
+}
+
+.report-content h2 {
+    font-size: 26px;
+    color: #667eea;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.report-content h3 {
+    font-size: 20px;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.report-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.report-content ul, .report-content ol {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.report-content li {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+.report-content blockquote {
+    background: #f9f9f9;
+    border-left: 4px solid #667eea;
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #555;
+}
+
+.report-content a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.report-content a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.report-content hr {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 30px 0;
+}
+
+.report-content strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.report-content code {
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.report-content pre {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.report-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* 푸터 */
+footer {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 10px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .logo-icon {
+        font-size: 36px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-actions {
+        width: 100%;
+    }
+
+    .nav-actions .btn {
+        flex: 1;
+    }
+
+    .report-content h1 {
+        font-size: 24px;
+    }
+
+    .report-content h2 {
+        font-size: 20px;
+    }
+}

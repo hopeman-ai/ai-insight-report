@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 과학기술-경제 인사이트 분석기</title>
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== 헤더 ===== -->
+        <header>
+            <h1>AI 과학기술-경제 인사이트 분석기</h1>
+            <p class="subtitle">PDF / DOCX 문서를 업로드하면 AI가 자동으로 분석합니다</p>
+        </header>
+
+        <main>
+            <!-- ===== 업로드 폼 ===== -->
+            <section class="upload-section">
+                <form action="/analyze" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <div class="upload-area" id="dropZone">
+                        <div class="upload-icon">+</div>
+                        <p class="upload-text">파일을 드래그하거나 클릭하여 선택</p>
+                        <p class="upload-hint">PDF, DOCX 파일 지원</p>
+                        <input type="file" name="file" id="fileInput" accept=".pdf,.docx" required>
+                        <p class="file-name" id="fileName"></p>
+                    </div>
+                    <button type="submit" class="btn-analyze" id="submitBtn">분석 시작</button>
+                </form>
+            </section>
+
+            <!-- ===== 에러 메시지 ===== -->
+            {% if error %}
+            <section class="error-box">
+                <strong>오류:</strong> {{ error }}
+            </section>
+            {% endif %}
+
+            <!-- ===== 분석 결과 ===== -->
+            {% if summary %}
+            <section class="results">
+                <!-- 파일 정보 -->
+                <div class="result-header">
+                    <h2>분석 결과</h2>
+                    <div class="file-info">
+                        <span class="badge">{{ filename }}</span>
+                        <span class="badge badge-secondary">{{ text_length|default(0) }} 글자 추출</span>
+                    </div>
+                </div>
+
+                <!-- 1) 중요 문장 -->
+                <div class="result-card">
+                    <h3>중요 문장 (Top 10)</h3>
+                    <ol class="sentence-list">
+                        {% for sentence in key_sentences %}
+                        <li>{{ sentence }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                <!-- 2) 핵심 요약 -->
+                <div class="result-card">
+                    <h3>과학기술 핵심 요약</h3>
+                    <div class="summary-text">
+                        {{ summary }}
+                    </div>
+                </div>
+
+                <!-- 3) 핵심 키워드 -->
+                <div class="result-card">
+                    <h3>핵심 키워드</h3>
+                    <div class="keyword-tags">
+                        {% for kw in keywords %}
+                        <span class="keyword-tag">{{ kw }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 4) 경제적 시사점 -->
+                <div class="result-card">
+                    <h3>경제적 시사점</h3>
+                    <div class="insights-grid">
+                        {% for category, content in economic_insights.items() %}
+                        <div class="insight-item">
+                            <h4>{{ category }}</h4>
+                            <p>{{ content }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </main>
+
+        <!-- ===== 푸터 ===== -->
+        <footer>
+            <p>AI 과학기술-경제 인사이트 분석기 v1.0</p>
+        </footer>
+    </div>
+
+    <script>
+        // ── 드래그 앤 드롭 지원 ──
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const submitBtn = document.getElementById('submitBtn');
+        const uploadForm = document.getElementById('uploadForm');
+
+        // 클릭으로 파일 선택
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        // 파일 선택 시 이름 표시
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileName.textContent = e.target.files[0].name;
+                dropZone.classList.add('has-file');
+            }
+        });
+
+        // 드래그 앤 드롭 이벤트
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                fileName.textContent = e.dataTransfer.files[0].name;
+                dropZone.classList.add('has-file');
+            }
+        });
+
+        // 폼 제출 시 로딩 표시
+        uploadForm.addEventListener('submit', () => {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '분석 중... (1~2분 소요)';
+            submitBtn.classList.add('loading');
+        });
+    </script>
+</body>
+</html>
